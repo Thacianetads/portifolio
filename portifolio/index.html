@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thacianetads</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+.w3-button:hover {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+.w3-no-underline {
+    text-decoration: none !important;
+  }
+
+  .w3-no-underline:hover {
+    text-decoration: none !important;
+  }
+
+  .hover-aqua:hover {
+    color: aqua !important;
+  }
+
+  .bgimg-1 {
+  background-image: url('imagem2.jpg');
+  min-height: 100%;
+  }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: aqua;
+  color: white;
+  cursor: pointer;
+  width: 50px;       /* largura fixa */
+  height: 50px;      /* altura fixa (igual à largura) */
+  border-radius: 50%; /* aqui fica redondo */
+  text-align: center;
+  line-height: 50px; /* centraliza o texto verticalmente */
+}
+
+#myBtn:hover {
+  background-color: aqua;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 12px solid lightslategray;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.container:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+</style>
+</head>
+
+<body class="w3-black">
+
+<button class="w3-circle" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up w3-center" style="font-size:25px"></i></button>
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <div class="w3-padding">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+      <a href="https://api.whatsapp.com/send/?phone=5541997923664&text=Oi+vim+pelo+seu+portifolio&type=phone_number&app_absent=0" class="w3-bar-item" style="position: absolute; left: 5%;"><i class="fa fa-whatsapp w3-text-white" style="font-size:20px;"></i></a>
+      <a href="https://github.com/Thacianetads" class="w3-bar-item" style="position: absolute; left: 8%;"><i class="fa fa-github w3-text-white" style="font-size:20px;"></i></a>
+      <a href="https://www.linkedin.com/in/thaciane-paula-fernandes-710670387" class="w3-bar-item" style="position: absolute; left: 11%;"><i class="fa fa-linkedin w3-text-white" style="font-size:20px;"></i></a>
+      <a href="#" class="w3-bar-item" style="position: absolute; left: 14%;"><i class="fa fa-envelope w3-text-white" style="font-size:20px;"></i></a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-hide-small w3-right" onclick="w3_open()">
+      <i class="fa fa-bars w3-text-white" onclick="w3_open()" style="font-size:20px;"></i>
+    </a>
+    </div>
+</div>
+</div>
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+  </div>
+</div>
+
+
+ <!-- Container da imagem -->
+<div style="position: relative;">
+
+  <!-- Imagem de fundo -->
+  <img src="imagem2.jpg" style="width:100%; display: block;" id="home">
+
+
+<!-- Sidebar -->
+<nav id="mySidebar" class="w3-sidebar w3-animate-top" style="display:none; width:100%; height:100vh; position:fixed; top:0; left:0; z-index:9999; padding-top:150px; background-color: rgba(0, 0, 0, 0.8);">
+  
+  <!-- Botão para fechar -->
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-xxlarge w3-text-white w3-padding w3-display-topright w3-no-underline w3-margin" style="padding:6px 24px">
+    X
+  </a>
+
+  <!-- Links -->
+  <div class="w3-bar-block w3-xlarge w3-center">
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-text-white hover-aqua">Home</a>
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-text-white hover-aqua">About</a>
+    <a href="https://github.com/Thacianetads" onclick="w3_close()" class="w3-bar-item w3-button w3-text-white hover-aqua">Single Portfolio</a>
+    <a href="#education" onclick="w3_close()" class="w3-bar-item w3-button w3-text-white hover-aqua">Education</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-text-white hover-aqua">Contact Me</a>
+  </div>
+</nav>
+</div>
+
+  <!-- Texto centralizado abaixo dos ícones -->
+  <div style="position: absolute; top: 25%; left: 5%; color: white;">
+    <header>
+      <h1 class="w3-jumbo" style="margin: 0;">
+        <span class="w3-hide-small" style="font-size:110px;">Hello!</span>
+      </h1>
+      <h1 class="w3-jumbo" style="margin: 0;">
+        <span class="w3-hide-small" style="font-size:90px;">I'm Thaciane</span>
+      </h1>
+      <h2 style="margin-top: 8px;">Back-End & Full Stack</h2>
+    </header>
+  </div>
+
+</div>
+
+
+
+ <!-- About Section -->
+<div class="w3-content w3-text-grey w3-padding-64" id="about">
+
+  <div class="about-container" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 100px;">
+
+    <!-- Left: Profile Image -->
+    <div class="about-photo">
+      <br>
+      <img src="foto.jpg" class="w3-round w3-margin-bottom" style="width: 350px; max-width: 100%;">
+    </div>
+
+    <!-- Right: Text Content -->
+    <div class="about-text" style="flex: 1; min-width: 260px;">
+      <h2 class="w3-text-aqua">ABOUT ME</h2>
+      <p class="w3-text-light-grey">
+        Hello, I'm Thaciane, a dedicated technology student, my goal is to get an internship in the area of systems development. 
+        With skills in Python, JS, TS, C#, PHP, Java, SQL, HTML and CSS. I have knowledge in frameworks, web applications, 
+        RESTful APIs, Docker, GitHub. I value collaboration and teamwork, and I'm especially interested in artificial 
+        intelligence and automation. Currently in the 2nd semester of Analysis and Systems Development. I want to continue 
+        learning and hope to contribute to challenging projects.
+      </p>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">NAME:</span> Thaciane de Paula Fernandes</h5>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">AGE:</span> 22 years old</h5>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">NATIONALITY:</span> Brazilian</h5>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">ADDRESS:</span> Colombo City, Brazil</h5>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">PHONE:</span> (41)99792-3664</h5>
+      <h5 class="w3-text-white"><span class="w3-hide-small w3-text-aqua">E-MAIL:</span> thaciane5709@gmail.com</h5>
+    </div>
+  </div>
+
+    <br>
+    <br>
+    <br>
+    <h2 class="w3-text-aqua w3-center">MY INTERESTS</h2>
+
+  <!-- Container dos ícones -->
+  <div>
+
+   <!-- Container dos ícones -->
+<div class="w3-center">
+  <!-- Ícone 1 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-code w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Study
+    </div>
+  </div>
+
+  <!-- Ícone 2 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-paw w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Cat
+    </div>
+  </div>
+
+  <!-- Ícone 3 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-plane w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Travel
+    </div>
+  </div>
+
+  <!-- Ícone 4 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-coffee w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Coffee
+    </div>
+  </div>
+
+  <!-- Ícone 5 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-gamepad w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Game
+    </div>
+  </div>
+
+  <!-- Ícone 6 -->
+  <div class="w3-display-container w3-circle w3-border w3-border-aqua w3-hover-opacity"
+       style="width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <i class="fa fa-desktop w3-text-aqua" style="font-size:30px;"></i>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+      Films
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<br id="education">
+<br>
+<div class="w3-container w3-center">
+  <h2 class="w3-text-aqua">EDUCATION</h2>
+  <hr>
+</div>
+
+<!-- Evento 1 -->
+<div class="w3-row w3-padding-16">
+  <div class="w3-col m2 w3-center">
+    <div class="w3-circle w3-border-aqua w3-border" style="width:40px;height:40px;line-height:40px;"><i class="fa fa-graduation-cap w3-text-aqua"></i></div>
+  </div>
+  <div class="w3-col m10">
+    <h4 class="w3-text-aqua">Integrated Computer Technician</h4>
+    <p class="w3-text-light-grey">Fev 2020 – Nov 2023</p>
+    <p class="w3-text-light-grey">Computer technicians work with computer information systems, programming, databases, computer architecture and organization, computer development
+software, web systems, applications, networks, robotics, and other technologies.</p>
+  </div>
+</div>
+<div class="w3-row w3-padding-16">
+  <div class="w3-col m2 w3-center">
+    <div class="w3-circle w3-border-black w3-border" style="width:40px;height:40px;line-height:40px;"></div>
+  </div>
+  <div class="w3-col m10">
+    <h4 class="w3-text-aqua">Technology in Analysis and Systems Development</h4>
+    <p class="w3-text-light-grey">Mar 2025 – studying 2TH semester</p>
+    <p class="w3-text-light-grey">The Technologist in Systems Analysis and Development analyzes, designs, documents, specifies, tests, implements, and maintains computer information systems. This professional also works with Web Systems development, computational tools, computer equipment, and project methodologies in the production of systems. Logical reasoning, the use of programming languages and project construction methodologies, concern for quality, usability, robustness, integrity, and security of computer programs are essential for the performance of this professional. They inspect, perform expertise, evaluate, issue reports, and technical opinions in their field of expertise.</p>
+  </div>
+  <div class="w3-row w3-padding-16">
+  <div class="w3-col m2 w3-center">
+    <div class="w3-circle w3-border-black w3-border" style="width:40px;height:40px;line-height:40px;"></div>
+  </div>
+  <div class="w3-col m10">
+
+   <!-- Grid for pricing tables -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <ul class="w3-ul">
+          <h2 class="w3-text-aqua w3-xlarge">1TH SEMESTER</h2>
+          <p class="w3-text-light-grey">Algorithms and Logic</p>
+          <p class="w3-text-light-grey">Systems Analysis</p>
+          <p class="w3-text-light-grey">Computer Architecture</p>
+          <p class="w3-text-light-grey">Programming Language I</p>
+          <p class="w3-text-light-grey">Languages ​​and Multimedia</p>
+          <p class="w3-text-light-grey">Computational Mathematics</p>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul">
+          <h2 class="w3-text-aqua w3-xlarge">2TH SEMESTER</h2>
+          <p class="w3-text-light-grey">DataBase I</p>
+          <p class="w3-text-light-grey">Web Development I</p>
+          <p class="w3-text-light-grey">Software Engineering</p>
+          <p class="w3-text-light-grey">Applied Statistics</p>
+          <p class="w3-text-light-grey">English Instrumental</p>
+          <p class="w3-text-light-grey">Programming Language II</p>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables -->
+    </div>
+    <br>
+  </div>
+  
+  
+</div>
+
+
+<div class="w3-container w3-center">
+  <h2 class="w3-text-aqua">WORK EXPERIENCE</h2>
+  <hr>
+</div>
+<!-- Evento 2 -->
+<div class="w3-row w3-padding-16">
+  <div class="w3-col m2 w3-center">
+    <div class="w3-circle w3-border-aqua w3-border" style="width:40px;height:40px;line-height:40px;"><i class="fa fa-briefcase w3-text-aqua"></i></div>
+  </div>
+  <div class="w3-col m10">
+    <h4 class="w3-text-aqua">TI INTERT AT THE COURT OF NW DRONES</h4>
+    <p class="w3-text-light-grey">Oct 2025 - until now</p>
+    <p class="w3-text-light-grey">IT development</p>
+  </div>
+</div>
+
+    <h2 class="w3-padding-16 w3-text-aqua w3-center">MY SKILLS</h2>
+    <hr class="w3-white">
+
+    <!-- Grid for pricing tables -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <ul class="w3-ul w3-container">
+         <p class="w3-text-light-grey">PYTHON</p>
+      <div class="w3-white">
+        <div class="w3-gray" style="height:28px;width:90%"></div>
+      </div>
+      <p class="w3-text-light-grey">JAVA</p>
+    <div class="w3-white">
+      <div class="w3-gray" style="height:28px;width:85%"></div>
+    </div>
+    <p class="w3-text-light-grey">C#</p>
+        <div class="w3-white">
+          <div class="w3-gray" style="height:28px;width:80%"></div>
+        </div>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-container">
+        <p class="w3-text-light-grey">NODE JS</p>
+        <div class="w3-white">
+          <div class="w3-gray" style="height:28px;width:90%"></div>
+        </div>
+        <p class="w3-text-light-grey">JAVASCRIPT</p>
+        <div class="w3-white">
+          <div class="w3-gray" style="height:28px;width:90%"></div>
+        </div>
+        <p class="w3-text-light-grey">PHP</p>
+        <div class="w3-white">
+          <div class="w3-gray" style="height:28px;width:70%"></div>
+        </div>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables -->
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+ 
+
+
+    <!-- Grid for pricing tables -->
+    <!-- Grid for pricing tables -->
+<div class="w3-row-padding" style="margin:0 -16px">
+
+  <div class="w3-third">
+    <ul class="w3-ul w3-asphalt w3-container">
+      <h2 class="w3-text-black w3-xlarge w3-justify"><b>02.</b></h2>
+      <h2 class="w3-text-aqua w3-xlarge"><b>FULL STACK</b></h2>
+      <p>Working on both front-end and back-end fascinates me. The combination of visual design with logic and structure is captivating. Creating complete and functional experiences brings me joy. Being involved in the entire development cycle ensures comprehensive solutions with high performance.</p>
+    </ul>
+  </div>
+
+  <div class="w3-third">
+    <ul class="w3-ul w3-aqua w3-container">
+      <h2 class="w3-xlarge w3-justify w3-text-black"><b>01.</b></h2>
+      <h2 class="w3-xlarge w3-text-black"><b>BACK END</b></h2>
+      <p class="w3-text-white">I have always had a strong passion for back-end development, and it is an area where I excel effortlessly. The intricate inner workings of systems, databases, and servers have always fascinated me. I find immense joy in architecting and implementing robust back-end solutions that power the functionality and performance of applications.</p>
+    </ul>
+  </div>
+
+  <div class="w3-third">
+    <ul class="w3-ul w3-asphalt w3-container">
+      <h2 class="w3-xlarge w3-justify w3-text-black"><b>03.</b></h2>
+      <h2 class="w3-xlarge w3-text-aqua"><b>TEAMWORK</b></h2>
+      <p class="w3-text-white">I enjoy teamwork as it unleashes the power of collaboration, resulting in exceptional outcomes. It fosters my personal and professional development, creating a dynamic and enriching environment. I am grateful for the chance to contribute to shared goals and build a promising future.</p>
+    </ul>
+  </div>
+
+    <!-- End Grid/Pricing tables -->
+    </div>
+    <br>
+  
+  
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content w3-center">
+    <h2 class="w3-text-aqua w3-center">SOME OF MY WORKS</h2>
+    <hr class="w3-white">
+
+<div class="w3-row-padding w3-center">
+
+  <!-- Projeto 1 -->
+  <div class="w3-col m4 container">
+    <img src="imagem.jpg" style="width:100%; height:200px; object-fit:cover;">
+    <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads/fullstack"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">JAVA</h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">Spring-boot</p>
+    </div>
+  </div>
+
+  <!-- Projeto 2 -->
+  <div class="w3-col m4 container">
+    <img src="imagem7.jpg" style="width:100%; height:200px; object-fit:cover;" class="w3-hover-opacity">
+    <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads/projetoIA"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">PYTHON</h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">Django, LangChain</p>
+    </div>
+  </div>
+
+  <!-- Projeto 3 -->
+  <div class="w3-col m4 container">
+    <img src="imagem3.jpg" style="width:100%; height:200px; object-fit:cover;" class="w3-hover-opacity">
+    <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads/crudfullstack"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">NODE JS </h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">js</p>
+    </div>
+  </div>
+</div>
+
+<div class="w3-row-padding w3-center w3-section">
+  <!-- Projeto 4 -->
+  <div class="w3-col m4 container">
+    <img src="imagem4.jpg" style="width:100%; height:200px; object-fit:cover;" class="w3-hover-opacity">
+    <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads/mvc-c-sharp"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">C#</h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">.Net</p>
+    </div>
+  </div>
+
+  <!-- Projeto 5 -->
+  <div class="w3-col m4 container">
+    <img src="imagem5.jpg" style="width:100%; height:200px; object-fit:cover;" class="w3-hover-opacity">
+  <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads/javascript"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">JS</h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">Html e css</p>
+    </div>
+  </div>
+
+  <!-- Projeto 6 -->
+  <div class="w3-col m4 container">
+    <img src="imagem6.jpg" style="width:100%; height:200px; object-fit:cover;" class="w3-hover-opacity">
+  <div class="overlay">
+      <br>
+      <br>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="javascript:void(0)" onclick="onClick(this.closest('.container').querySelector('img'))"><i class="fa fa-search-plus w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <div class="w3-display-container w3-circle w3-border w3-border-aqua"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:6px;">
+      <a href="https://github.com/Thacianetads"><i class="fa fa-link w3-text-aqua w3-center" style="font-size:22px;"></i></a></div>
+      <h4 class="w3-text-black" style="position: absolute; left: 10%;">DATABASES</h4>
+      <p class="w3-text-aqua" style="position: absolute; left: 10%; top:70%">MySQL e SQLite</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal" onclick="this.style.display='none'" style="background-color: rgba(0, 0, 0, 0.8);">
+  <a href="#modal01" class="w3-xxlarge w3-text-white w3-padding w3-display-topright w3-no-underline w3-margin" style="padding:6px 24px">X</a>
+
+  <div class="w3-modal-content w3-animate-zoom w3-center"
+       style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 70vh; background: transparent;">
+       
+    <img id="img01" class="w3-image"
+     style="width: 30vw; height: 40vh; object-fit: cover;">
+    <p id="caption" class="w3-opacity w3-large" style="color: white; margin-top: 10px;"></p>
+  </div>
+</div>
+
+    <!-- End Grid/Pricing tables -->
+    </div>
+    <br>
+    <br>
+     <p>
+     <div align="center">
+        <a href="https://github.com/Thacianetads" 
+        class="w3-button w3-black w3-border-aqua w3-text-aqua w3-border w3-padding-large">
+        LOAD MORE
+        </a>
+    </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-aqua w3-center">CONTACT ME</h2>
+    <hr class="w3-white">
+    <p class="w3-text-dark-gray">No email service, for example only. :)
+</p>
+    <br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p>
+      <div align="center">
+        <button class="w3-button w3-black w3-border-aqua w3-text-aqua w3-border w3-padding-large" type="submit">
+          SEND MESSAGE
+        </button>
+      </p>
+    </div>
+    </form>
+  <!-- End Contact Section -->
+  </div>
+  
+
+  <!-- Ícone 1 -->
+   <div class="w3-center">
+  <div class="w3-display-container w3-circle w3-asphalt"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <a href="https://api.whatsapp.com/send/?phone=5541997923664&text=Oi+vim+pelo+seu+portifolio&type=phone_number&app_absent=0"><i class="fa fa-whatsapp w3-text-aqua" style="font-size:22px;"></i></a>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+    </div>
+  </div>
+
+  <!-- Ícone 2 -->
+  <div class="w3-display-container w3-circle w3-asphalt"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <a href="https://github.com/Thacianetads"><i class="fa fa-github w3-text-aqua w3-center" style="font-size:22px;"></i></a>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+    </div>
+  </div>
+
+  <!-- Ícone 3 -->
+  <div class="w3-display-container w3-circle w3-asphalt"
+       style="width:45px;height:45px;display:inline-flex;align-items:center;justify-content:center;margin:20px;">
+    <a href="https://www.linkedin.com/in/thaciane-paula-fernandes-710670387"><i class="fa fa-linkedin w3-text-aqua w3-center" style="font-size:22px;"></i></a>
+    <div class="w3-display-bottommiddle w3-small w3-padding w3-text-white w3-hide w3-animate-opacity">
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <hr>
+    <p class="w3-medium w3-center">© 2025. ALL RIGHTS RESERVED</p>
+
+
+  <!-- End footer -->
+  </footer>
+
+
+<!-- END PAGE CONTENT -->
+</div>
+
+<script>
+  // Get the button
+  let mybutton = document.getElementById("myBtn");
+
+  // Quando o usuário rolar a página
+  window.onscroll = function() {
+    scrollFunction();   // mostra/esconde o botão "Top"
+    myFunction();       // muda a navbar
+  };
+
+  // Mostra ou esconde o botão "Top"
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // Altera estilo da navbar quando rolar 100px
+  function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      navbar.className = "w3-bar w3-card w3-animate-top w3-aqua";
+    } else {
+      navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-aqua", "");
+    }
+  }
+
+  // Menu mobile
+  function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+
+  // Mostrar legenda ao passar o mouse nas imagens
+  document.querySelectorAll('.w3-display-container').forEach(function(div){
+    div.addEventListener('mouseenter', function(){
+      div.querySelector('div').classList.remove('w3-hide');
+    });
+    div.addEventListener('mouseleave', function(){
+      div.querySelector('div').classList.add('w3-hide');
+    });
+  });
+
+  // Alterna entre padding no grid
+  function toggleGridPadding() {
+    var x = document.getElementById("myGrid");
+    if (x.className === "w3-row") {
+      x.className = "w3-row-padding";
+    } else {
+      x.className = "w3-row";
+    }
+  }
+
+  // Sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.width = "100%";
+    document.getElementById("mySidebar").style.display = "block";
+  }
+
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+
+  // Modal da imagem
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+
+  // Função do botão Top (pode estar no HTML com onclick="topFunction()")
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  // Deixa a função disponível no escopo global
+  window.topFunction = topFunction;
+
+</script>
